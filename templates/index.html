@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLO Object Tracking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 YOLO Object Tracking</h1>
+            <p>Upload a video to track objects with persistent IDs</p>
+        </div>
+
+        <div class="upload-section">
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📹</div>
+                <div class="upload-text">Click to upload or drag and drop</div>
+                <div class="upload-hint">Supported formats: MP4, AVI, MOV, MKV (Max: 100MB)</div>
+            </div>
+            <input type="file" id="fileInput" accept="video/mp4,video/avi,video/quicktime,video/x-matroska">
+            
+            <div class="file-info" id="fileInfo">
+                <strong>Selected file:</strong> <span id="fileName"></span>
+            </div>
+
+            <button class="btn" id="uploadBtn" disabled>Track Objects</button>
+            
+            <div class="error-message" id="errorMessage"></div>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <h3>Processing your video...</h3>
+            <p>Tracking objects across frames - this may take a few moments</p>
+        </div>
+
+        <div class="results-section" id="results">
+            <h2 style="margin-bottom: 20px; color: #333;">🎬 Tracking Results</h2>
+            
+            <div class="summary-card">
+                <h3>📊 Summary</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value" id="totalUniqueObjects">0</div>
+                        <div class="stat-label">Unique Objects Tracked</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="uniqueClasses">0</div>
+                        <div class="stat-label">Object Classes</div>
+                    </div>
+                </div>
+
+                <h4 style="margin: 20px 0 10px; color: #333;">📋 Tracked Objects by Class:</h4>
+                <div id="objectsByClass"></div>
+            </div>
+
+            <div class="summary-card">
+                <h3>🔍 Detection Timeline</h3>
+                <div class="tracking-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Track ID</th>
+                                <th>Object Class</th>
+                                <th>First Seen (MM:SS)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="trackingTable">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="json-preview">
+                <h3 style="margin-bottom: 15px; color: #333;">📄 JSON Output Preview</h3>
+                <pre id="jsonPreview"></pre>
+            </div>
+
+            <div class="download-buttons">
+                <button class="btn btn-success" id="downloadJson">📄 Download JSON</button>
+                <button class="btn" id="analyzeAnother">Track Another Video</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
