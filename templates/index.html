@@ -3,68 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YOLO Object Tracking</title>
+    <title>YOLO::TRACKING_SYSTEM_V1</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🎯 YOLO Object Tracking</h1>
-            <p>Upload a video to track objects with persistent IDs</p>
+            <h1>YOLO // Tracking_System</h1>
+            <p>Target Acquisition & Persistent ID Tracking</p>
         </div>
 
         <div class="upload-section">
             <div class="upload-area" id="uploadArea">
-                <div class="upload-icon">📹</div>
-                <div class="upload-text">Click to upload or drag and drop</div>
-                <div class="upload-hint">Supported formats: MP4, AVI, MOV, MKV (Max: 100MB)</div>
+                <div class="upload-icon">⌾</div>
+                <div class="upload-text">Drop Video Feed Here</div>
+                <div class="upload-hint">[MP4, AVI, MOV, MKV] :: MAX_SIZE: 100MB</div>
             </div>
             <input type="file" id="fileInput" accept="video/mp4,video/avi,video/quicktime,video/x-matroska">
             
             <div class="file-info" id="fileInfo">
-                <strong>Selected file:</strong> <span id="fileName"></span>
+                <strong>>> VIDEO_LOADED:</strong> <span id="fileName"></span>
             </div>
 
-            <button class="btn" id="uploadBtn" disabled>Track Objects</button>
+            <button class="btn" id="uploadBtn" disabled>INITIALIZE TRACKING</button>
             
             <div class="error-message" id="errorMessage"></div>
         </div>
 
         <div class="loading" id="loading">
             <div class="spinner"></div>
-            <h3>Processing your video...</h3>
-            <p>Tracking objects across frames - this may take a few moments</p>
+            <h3>PROCESSING DATA...</h3>
+            <p>ANALYZING FRAMES // CALCULATING VECTORS</p>
         </div>
 
         <div class="results-section" id="results">
-            <h2 style="margin-bottom: 20px; color: #333;">🎬 Tracking Results</h2>
+            <h2>>> ANALYSIS_COMPLETE</h2>
             
             <div class="summary-card">
-                <h3>📊 Summary</h3>
+                <h3>System Statistics</h3>
                 <div class="stats-grid">
                     <div class="stat-item">
                         <div class="stat-value" id="totalUniqueObjects">0</div>
-                        <div class="stat-label">Unique Objects Tracked</div>
+                        <div class="stat-label">Unique Targets</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-value" id="uniqueClasses">0</div>
-                        <div class="stat-label">Object Classes</div>
+                        <div class="stat-label">Target Classes</div>
                     </div>
                 </div>
 
-                <h4 style="margin: 20px 0 10px; color: #333;">📋 Tracked Objects by Class:</h4>
+                <h3>Class Distribution</h3>
                 <div id="objectsByClass"></div>
             </div>
 
             <div class="summary-card">
-                <h3>🔍 Detection Timeline</h3>
+                <h3>Temporal Log</h3>
                 <div class="tracking-table">
                     <table>
                         <thead>
                             <tr>
-                                <th>Track ID</th>
-                                <th>Object Class</th>
-                                <th>First Seen (MM:SS)</th>
+                                <th>TRACK_ID</th>
+                                <th>CLASS</th>
+                                <th>T_MINUS (MM:SS)</th>
                             </tr>
                         </thead>
                         <tbody id="trackingTable">
@@ -74,13 +74,13 @@
             </div>
 
             <div class="json-preview">
-                <h3 style="margin-bottom: 15px; color: #333;">📄 JSON Output Preview</h3>
+                <h3>RAW_DATA_STREAM</h3>
                 <pre id="jsonPreview"></pre>
             </div>
 
             <div class="download-buttons">
-                <button class="btn btn-success" id="downloadJson">📄 Download JSON</button>
-                <button class="btn" id="analyzeAnother">Track Another Video</button>
+                <button class="btn btn-success" id="downloadJson">DOWNLOAD_LOGS</button>
+                <button class="btn" id="analyzeAnother">RESET_SYSTEM</button>
             </div>
         </div>
     </div>
